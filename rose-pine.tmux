@@ -44,8 +44,8 @@ main() {
     # or in the plugin's features
     if [[ $theme == main ]]; then
 
-        thm_base="#191724";
-        thm_surface="#1f1d2e";
+        thm_base="#1c1c1c";
+        thm_surface="#1c1c1c";
         thm_overlay="#26233a";
         thm_muted="#6e6a86";
         thm_subtle="#908caa";
@@ -55,7 +55,7 @@ main() {
         thm_rose="#ebbcba";
         thm_pine="#31748f";
         thm_foam="#9ccfd8";
-        thm_iris="#c4a7e7";
+        thm_iris="#5c5c5c";
         thm_hl_low="#21202e";
         thm_hl_med="#403d52";
         thm_hl_high="#524f67";
@@ -281,7 +281,7 @@ main() {
     # Right columns organization:
 
     # Right column shows nothing by default
-    local right_column
+    local right_column=$show_session
 
     # Window status by default shows the current directory basename
     local window_status_format=$show_directory_in_window_status
@@ -320,7 +320,7 @@ main() {
 
     set status-right "$right_column"
 
-    set status-left "$show_session$show_window"
+    set status-left "$show_window"
 
     local current_window_count
     current_window_count=$(tmux list-windows | wc -l)
@@ -330,8 +330,7 @@ main() {
 
     if [[ "$prioritize_windows" == "on" ]]; then
         if [[ "$current_window_count" -gt "$user_window_count" || "$current_window_width" -lt "$user_window_width" ]]; then
-            set status-left "$show_session$show_window$show_directory"
-            # set status-right "$show_directory"
+            set status-left "$show_window$show_directory"
             set status-right ""
         fi
     else
