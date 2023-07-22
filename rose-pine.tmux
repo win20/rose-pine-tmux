@@ -320,7 +320,7 @@ main() {
 
     set status-right "$right_column"
 
-    set status-left "$show_window"
+    set status-left " "
 
     local current_window_count
     current_window_count=$(tmux list-windows | wc -l)
